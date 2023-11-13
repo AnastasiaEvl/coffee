@@ -1,0 +1,15 @@
+.button {
+    border: 0.5px solid transparent;
+    border-radius: 1rem;
+    padding: 1rem 3rem;
+    background-color: darkgoldenrod;
+    color: white;
+}
+.buttonLeft{
+    border: 0.5px solid transparent;
+    border-radius: 1rem;
+    padding: 0 2rem;
+    background-color: darkgoldenrod;
+    color: white;
+    margin-left: auto;
+}

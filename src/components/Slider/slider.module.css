@@ -1,0 +1,13 @@
+.carousel{
+    width: 78%;
+    margin: 0 auto;
+}
+.photo{
+    width: 32rem;
+    height: 20rem;
+    border-radius: 5rem;
+}
+.slide{
+    width: 32rem;
+    margin-left: 4rem;
+}

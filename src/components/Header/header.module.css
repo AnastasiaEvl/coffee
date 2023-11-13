@@ -1,0 +1,27 @@
+.logo {
+    width: 4rem;
+    height: 4rem;
+}
+
+.icon {
+    width: 3rem;
+    height: auto;
+    margin: 0 auto;
+}
+.headerStyle{
+    padding: 1rem 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.sectionsStyle li{
+    display: inline;
+}
+.link{
+    display: flex;
+    flex-direction: column;
+}
+.navigation ul{
+display: flex;
+    gap: 1rem;
+}
+

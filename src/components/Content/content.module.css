@@ -1,0 +1,22 @@
+.card{
+    width: 20rem;
+    height: 18rem;
+    border-radius: 2rem;
+    filter: brightness(65%)
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 1rem;
+    justify-content: space-evenly;
+}
+.title {
+    display: flex;
+    padding-left:3.5rem;
+    gap:1rem;
+    justify-content: center;
+    height: 2.5rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
