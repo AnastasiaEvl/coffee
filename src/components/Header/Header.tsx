@@ -14,6 +14,7 @@ import scull from '../../assets/icons/scull.png'
 import woman from '../../assets/icons/woman.png'
 import bonus from "../Location/location.module.css";
 import {useAppSelector} from "../../hooks/useRedux";
+import basketIcon from '../../assets/icons/basket.png'
 
 
 // @ts-ignore
@@ -35,6 +36,8 @@ export const Header = ()=> {
 
     const x = localStorage.getItem('avatar')
 
+    const basketGoods = localStorage.getItem('basket')
+
 
 
     useEffect(() => {
@@ -50,7 +53,7 @@ export const Header = ()=> {
                 }
             }
         }
-    }, [avatar]);
+    }, [avatar,basketGoods ]);
 
 
 
@@ -58,6 +61,9 @@ export const Header = ()=> {
 
     const personalCabinet=()=>{
         authorization ? navigate('/profile') : navigate('/personal')
+    }
+    const basket=()=>{
+        navigate('/basket')
     }
 
     return (
@@ -77,6 +83,15 @@ export const Header = ()=> {
                             />
                                 <span>График работы</span> <span>и контакты</span></a>
                         </li>
+                        {basketGoods ? (
+                                <li onClick={basket}>
+                                    <a className={header.link}>
+                                    <img src={basketIcon} alt='basket-icon' className={header.icon}/>
+                                    Корзина
+                                    </a>
+                                </li>
+                        ):null}
+
                     <li onClick={personalCabinet}>
                         <a className={header.link}>
                             <img

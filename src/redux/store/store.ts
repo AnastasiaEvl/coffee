@@ -2,9 +2,13 @@ import {combineReducers} from "redux";
 import {authReducer} from "../auth";
 import {configureStore} from "@reduxjs/toolkit";
 import {ToolkitStore} from "@reduxjs/toolkit/dist/configureStore";
+import {coffeeReducer} from "../products";
 
 const rootReducer = combineReducers({
     auth:authReducer,
+    coffeeHot: coffeeReducer,
+    coffeeCold: coffeeReducer
+
 })
 
 

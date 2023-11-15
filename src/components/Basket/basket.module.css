@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    gap: 0.5rem;
+}
+.img{
+    width: 4.7rem;
+    height: 5rem;
+    border-radius: 1rem;
+}
+.content{
+    padding: 2rem 1rem;
+}

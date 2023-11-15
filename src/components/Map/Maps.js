@@ -54,9 +54,6 @@ function Maps(props) {
                 type: "geojson",
                 data: stores,
             });
-
-
-
             geolocate.on("geolocate",(e)=>getLocations(e.coords));
         });
         map.on("click", (event) => {
@@ -179,7 +176,6 @@ function Maps(props) {
     function addMarkers() {
         for (const marker of stores.features) {
             const el = document.createElement("div");
-            console.log(el)
             const divText = document.createElement("div");
             divText.className = `${markers.containerName}`;
             const text = document.createTextNode(marker.properties.label);
@@ -194,15 +190,7 @@ function Maps(props) {
                 .addTo(map);
             el.addEventListener("click", (e) => {
                 flyToStore(marker);
-                const activeItem = document.getElementsByClassName("active");
-                e.stopPropagation();
-                if (activeItem[0]) {
-                    activeItem[0].classList.remove("active");
-                }
-                const listing = document.getElementById(
-                    `listing-${marker.properties.id}`
-                );
-                listing.classList.add("active");
+                localStorage.setItem('cafe-location',JSON.stringify(marker.properties.label))
             });
         }
     }
