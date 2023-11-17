@@ -25,3 +25,16 @@ export const fetchColdDrinks: AsyncThunk<IProduct[], void, any> = createAsyncThu
 
     }
 )
+
+export const fetchTeaDrinks: AsyncThunk<IProduct[], void, any> = createAsyncThunk(
+    'country/fetchCountry',
+    async (_, {rejectWithValue}) => {
+        try{
+            return await ProductsApi.fetchTea()
+        }
+        catch (error:any){
+            return rejectWithValue(error.response.data)
+        }
+
+    }
+)

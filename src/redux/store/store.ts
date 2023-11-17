@@ -7,8 +7,8 @@ import {coffeeReducer} from "../products";
 const rootReducer = combineReducers({
     auth:authReducer,
     coffeeHot: coffeeReducer,
-    coffeeCold: coffeeReducer
-
+    coffeeCold: coffeeReducer,
+    teaDrinks: coffeeReducer
 })
 
 

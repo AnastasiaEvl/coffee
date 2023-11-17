@@ -53,7 +53,10 @@ export const Header = ()=> {
                 }
             }
         }
-    }, [avatar,basketGoods ]);
+    }, [avatar]);
+
+
+
 
 
 

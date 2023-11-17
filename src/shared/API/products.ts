@@ -2,8 +2,9 @@ import Api from "./path";
 import {IProduct} from "../Types/InterfaceProduct";
 
 class ProductsApi extends Api {
-    endpointHot ='hot'
-    endpointCold = 'iced'
+    endpointHot ='coffee'
+    endpointCold = 'cold'
+    endpointTea = 'tea'
 
     async fetchHot(): Promise<IProduct[]>{
         const {data} = await this.api.get<IProduct[]>(this.endpointHot)
@@ -12,6 +13,11 @@ class ProductsApi extends Api {
 
     async fetchCold():Promise<IProduct[]>{
         const {data} = await this.api.get<IProduct[]>(this.endpointCold)
+        return data
+    }
+
+    async fetchTea():Promise<IProduct[]>{
+        const {data} = await this.api.get<IProduct[]>(this.endpointTea)
         return data
     }
 }

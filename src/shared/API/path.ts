@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 class Api {
-    private readonly BASE_URL:string = 'https://api.sampleapis.com/coffee/';
+    private readonly BASE_URL:string = 'http://localhost:3042/';
     protected api
     constructor() {
         this.api = axios.create(
