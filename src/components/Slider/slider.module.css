@@ -1,6 +1,7 @@
 .carousel{
     width: 78%;
-    margin: 0 auto;
+    margin: 5rem auto;
+
 }
 .photo{
     width: 32rem;
@@ -10,4 +11,16 @@
 .slide{
     width: 32rem;
     margin-left: 4rem;
+}
+.smallTitle {
+    background-color: white;
+    opacity: 0.8;
+    width: 80%;
+    border-radius: 1rem;
+    margin: 0 auto;
+   padding: 0.5rem;
+    color: black;
+    position: relative;
+    z-index: 1;
+    bottom: 3rem
 }

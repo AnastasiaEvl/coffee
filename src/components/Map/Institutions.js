@@ -31,16 +31,12 @@ export default function Institution({item}) {
                             <div className='institutionAddress'>{i.address}</div>
                             <div className="institutionInfo">
                                 <div className="institutionStar">
-                                    {/*<div >*/}
-                                    {/*    <img src={star} alt="img" />*/}
-                                    {/*</div>*/}
-                                    <div className="text">{i.rating}</div>
                                 </div>
                                 <div className="institutionNav">
                                     {/*<div>*/}
                                     {/*    <img src={nav} alt="img" />*/}
                                     {/*</div>*/}
-                                    <div  className="text">{i.distance} км</div>
+                                    <div  className="text">{i.distance} km</div>
                                 </div>
                             </div>
                         </div>

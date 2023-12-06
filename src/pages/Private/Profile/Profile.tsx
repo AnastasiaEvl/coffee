@@ -10,6 +10,9 @@ import man from "../../../assets/icons/man.png";
 import mummy from "../../../assets/icons/mummy.png";
 import scull from "../../../assets/icons/scull.png";
 import woman from "../../../assets/icons/woman.png";
+import profile from './profile.module.css'
+import ModalAlert from "../../../components/Modal/ModalAlert";
+import {useSelector} from "react-redux";
 
 export const Profile = () => {
 
@@ -45,24 +48,23 @@ export const Profile = () => {
 
     // @ts-ignore
     const y = JSON.parse(localStorage.getItem('name'))
+    // @ts-ignore
 
     return (
-        <>
-            {/*<NavLink to={`/`}>*/}
+        <div className={profile.container}>
                 <img
                     src={avatar}
                     alt="alien-icon"
                     className={header.icon}
                 />
                 <h2>{y}</h2>
-            {/*</NavLink>*/}
-            <NavLink to={`/orders`}>
-                <h2>Заказы</h2>
+            <NavLink to={`/orders`}
+                     style={{ textDecoration: 'none' }}>
+                <h2 className={profile.title}  style={{ textDecoration: 'none' }}>Current order</h2>
             </NavLink>
-
-            <NavLink to={'/questions'}>
-                <h2>Частые вопросы</h2>
+            <NavLink to={'/questions'} style={{ textDecoration: 'none' }}>
+                <h2 className={profile.title} style={{ textDecoration: 'none' }}>Common questions</h2>
             </NavLink>
-        </>
+        </div>
     )
 }

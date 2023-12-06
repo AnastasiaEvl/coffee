@@ -12,7 +12,6 @@ import man from '../../assets/icons/man.png'
 import mummy from '../../assets/icons/mummy.png'
 import scull from '../../assets/icons/scull.png'
 import woman from '../../assets/icons/woman.png'
-import bonus from "../Location/location.module.css";
 import {useAppSelector} from "../../hooks/useRedux";
 import basketIcon from '../../assets/icons/basket.png'
 
@@ -33,10 +32,10 @@ export const Header = ()=> {
     }
 
     const [avatar, setAvatar]=useState(alien)
+    const [basketImage, setBasketImage] = useState(false)
 
     const x = localStorage.getItem('avatar')
 
-    const basketGoods = localStorage.getItem('basket')
 
 
 
@@ -56,7 +55,8 @@ export const Header = ()=> {
     }, [avatar]);
 
 
-
+    // @ts-ignore
+    const y = JSON.parse(localStorage.getItem('name'))
 
 
 
@@ -69,6 +69,11 @@ export const Header = ()=> {
         navigate('/basket')
     }
 
+    const workTime=()=>{
+        navigate('/workTime')
+    }
+
+
     return (
         <header className={header.headerStyle}>
             <img
@@ -78,22 +83,20 @@ export const Header = ()=> {
             />
             <nav className={header.navigation}>
                 <ul className={header.sectionsStyle}>
-                       <li>
+                       <li onClick={workTime}>
                             <a className={header.link}><img
                                 src={inf}
                                 alt="inf-icon"
                                 className={header.icon}
                             />
-                                <span>График работы</span> <span>и контакты</span></a>
+                                <span>Schedule</span></a>
                         </li>
-                        {basketGoods ? (
                                 <li onClick={basket}>
                                     <a className={header.link}>
                                     <img src={basketIcon} alt='basket-icon' className={header.icon}/>
-                                    Корзина
+                                    Basket
                                     </a>
                                 </li>
-                        ):null}
 
                     <li onClick={personalCabinet}>
                         <a className={header.link}>
@@ -102,8 +105,9 @@ export const Header = ()=> {
                             alt="alien-icon"
                             className={header.icon}
                         />
-                            {authorization ? null :
-                            <span>Вход</span>}
+
+                            {authorization ? <span>{y}</span> :
+                            <span>Enter</span>}
                         </a>
                     </li>
                 </ul>

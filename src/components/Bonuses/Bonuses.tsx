@@ -16,10 +16,10 @@ export const Bonuses = ()=>{
     return (
         <div className={bonus.wrapper}>
             <img src={star} alt='star-icon' className={bonus.icon}/>
-            {authorization ? <h2 className={bonus.title}>У вас 0 бонусов</h2> :
-            <h2 className={bonus.title}>Здесь будут ваши бонусы</h2>}
+            {authorization ? <h2 className={bonus.title}>You have 0 bonuses</h2> :
+            <h2 className={bonus.title}>Your bonuses will be here</h2>}
             {authorization ? null :
-            <button className={bonuses.buttonLeft} onClick={personalCabinet}>Войти</button>}
+            <button className={bonuses.buttonLeft} onClick={personalCabinet}>Enter</button>}
         </div>
     )
 }

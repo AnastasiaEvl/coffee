@@ -4,33 +4,39 @@ import bonuses from "../Bonuses/bonuses.module.css";
 import {fetchColdDrinks, fetchHotDrinks, fetchTeaDrinks} from "../../redux/products";
 import {useAppDispatch, useAppSelector} from "../../hooks/useRedux";
 import {Modal} from "./Modal";
+import {IProduct} from "../../shared/Types/InterfaceProduct";
+import {Button} from "../../shared/Button/Button";
+import {openModal} from "../../redux/modal/modalSlice";
 
-
-interface IDeatiled {
-    title?: string
-    description?: string
-    image?: string
-    ingredients?: string
-}
-
+// @ts-ignore
 export const Content = () => {
 
     const [active, setActive] = useState(false);
-    const [modalText, setModalText] = useState<IDeatiled[]>([])
-    const [coffee, setCoffee] = useState(true)
-    const [cold, setCold] = useState(false)
-    const [tea, setTea] = useState(false)
+    const [modalText, setModalText] = useState<IProduct[]>([])
+    const [coffee, setCoffee] = useState<boolean>(true)
+    const [cold, setCold] = useState<boolean>(false)
+    const [tea, setTea] = useState<boolean>(false)
+    const [counter, setCounter] = useState(1)
 
 
     const dispatch = useAppDispatch()
 
-    // @ts-ignore
+    const authorization = useAppSelector((state) => state.auth.authorization)
+
     useEffect(() => {
         dispatch(fetchHotDrinks())
-        // dispatch(fetchColdDrinks())
-        // dispatch(fetchTeaDrinks())
     }, [dispatch])
 
+    function increment() {
+            setCounter(counter + 1)
+    }
+
+    function decrement() {
+        if(counter === 1){
+            setCounter(1)
+        }else{
+        setCounter(counter - 1)}
+    }
 
     function getRandomInt(min: number, max: number) {
         min = Math.ceil(min);
@@ -39,36 +45,44 @@ export const Content = () => {
     }
 
     function addToBasket(name: any, price: any) {
-        if (!(localStorage.getItem('basket'))) {
-            localStorage.setItem('basket', JSON.stringify([]))
-            name.push(price)
-
+        if (authorization) {
             // @ts-ignore
-            const storageElements: any | null = JSON.parse(localStorage.getItem('basket'))
-            storageElements.push(({...name}))
-            localStorage.setItem('basket', JSON.stringify(storageElements))
+            if (!(localStorage.getItem('basket'))) {
+                localStorage.setItem('basket', JSON.stringify([]))
+                name.push(price)
+                // name.push(counter)
+                // @ts-ignore
+                const storageElements: any | null = JSON.parse(localStorage.getItem('basket'))
+                storageElements.push(({...name}))
+                localStorage.setItem('basket', JSON.stringify(storageElements))
+                // @ts-ignore
+                dispatch(openModal('Added to the basket'))
+            } else {
+                name.push(price)
+                // name.push(counter)
+                // @ts-ignore
+                const storageElements: any | null = JSON.parse(localStorage.getItem('basket'))
+                storageElements.push({...name})
+                localStorage.setItem('basket', JSON.stringify(storageElements))
+                // @ts-ignore
+                dispatch(openModal('Added to the basket'))
+            }
         } else {
-            name.push(price)
-            console.log(name)
             // @ts-ignore
-            const storageElements: any | null = JSON.parse(localStorage.getItem('basket'))
-            console.log(storageElements)
-            storageElements.push({...name})
-            localStorage.setItem('basket', JSON.stringify(storageElements))
+            dispatch(openModal('You need to register for purchasing'));
         }
+        setCounter(1)
+        setActive(false)
     }
 
     function showDetailedInf(titles: any) {
-        console.log(titles)
         setActive(true)
-        const x = productHot.filter((i) => i.title === titles)
-        const y = productCold.filter((i) => i.title === titles)
-        if ((x.length > 0)) {
-            // @ts-ignore
-            setModalText(x)
-        } else if ((y.length > 0)) {
-            // @ts-ignore
-            setModalText(y)
+        const hotProducts: IProduct[] = productHot.filter((i) => i.title === titles)
+        const coldProduct: IProduct[] = productCold.filter((i) => i.title === titles)
+        if ((hotProducts.length > 0)) {
+            setModalText(hotProducts)
+        } else if ((coldProduct.length > 0)) {
+            setModalText(coldProduct)
         }
     }
 
@@ -76,17 +90,8 @@ export const Content = () => {
         state.coffeeHot)
     const {productCold} = useAppSelector((state) =>
         (state.coffeeCold))
-    // @ts-ignore
-
-    console.log(productCold)
-
-
     const {productTea} = useAppSelector((state) =>
         state.teaDrinks)
-    // @ts-ignore
-
-
-    console.log(productTea)
 
     const showHotDrinks = () => {
         setCold(false)
@@ -111,68 +116,84 @@ export const Content = () => {
 
 
     // @ts-ignore
+    // @ts-ignore
     return (
         <>
             {isLoading ? (<div><p>LOADING....</p></div>) : (
-                <>
+                <div className={content.mainContainer}>
                     <div className={content.title}>
-                        <button className={bonuses.button} onClick={showHotDrinks}>Hot Coffee</button>
-                        <button className={bonuses.button} onClick={showColdDrinks}>Cold Drinks</button>
-                        <button className={bonuses.button} onClick={showTea}>Tea</button>
+                        <Button className={bonuses.button} onClick={showHotDrinks}><span>Hot Coffee</span></Button>
+                        <Button className={bonuses.button} onClick={showColdDrinks}><span>Cold Drinks</span></Button>
+                        <Button className={bonuses.button} onClick={showTea}><span>Tea</span></Button>
                     </div>
                     {coffee && (
                         <>
-                            <h2>HOT COFFEE</h2>
+                            <h2 className={content.name}>HOT COFFEE</h2>
                             <div className={content.container}>
-                                {productHot.map((e, index) => (<div key={index}>
-                                    <h2>{e.title}</h2>
+                                {productHot.map((e, index) => (<div key={index} className={content.smallContainer}>
+                                    <h2 className={content.drinkTitle}>{e.title}</h2>
                                     <img className={content.card} src={e.image}
-                                         onClick={() => showDetailedInf(e.title)}/>
+                                         onClick={() => showDetailedInf(e.title)} alt='coffee-image'/>
                                 </div>))}
                             </div>
                         </>)}
 
                     {cold && (
                         <>
-                            <h2>COLD DRINKS</h2>
+                            <h2 className={content.name}>COLD DRINKS</h2>
                             <div className={content.container}>
-                                {productCold.map((e, index) => (<div key={index}>
-                                    <h2>{e.title}</h2>
+                                {productCold.map((e, index) => (<div key={index} className={content.smallContainer}>
+                                    <h2 className={content.drinkTitle}>{e.title}</h2>
                                     <img className={content.card} src={e.image}
-                                         onClick={() => showDetailedInf(e.title)}/>
+                                         onClick={() => showDetailedInf(e.title)} alt='cold-coffee-image'/>
                                 </div>))}
                             </div>
                         </>)}
 
                     {tea && (
                         <>
-                            <h2>Tea</h2>
+                            <h2 className={content.name}>Tea</h2>
                             <div className={content.container}>
-                                {productTea.map((e, index) => (<div key={index}>
-                                    <h2>{e.title}</h2>
+                                {productTea.map((e, index) => (<div key={index} className={content.smallContainer}>
+                                    <h2 className={content.drinkTitle}>{e.title}</h2>
                                     <img className={content.card} src={e.image}
-                                         onClick={() => showDetailedInf(e.title)}/>
+                                         onClick={() => showDetailedInf(e.title)} alt='tea-image'/>
                                 </div>))}
                             </div>
                         </>)}
 
                     <Modal active={active} setActive={setActive}>
                         {modalText.map((e, index) => (
-                            <div key={index}>
+                            <div key={index} className={content.modal}>
                                 <h2>
                                     {e.title}
                                 </h2>
-                                <img className={content.card} src={e.image}/>
-                                <p> {e.description}</p>
-                                <p>Ingredients: {e.ingredients}</p>
-                                <p>{getRandomInt(3, 10)} USD</p>
-                                <div onClick={() => addToBasket(modalText, getRandomInt(3, 10))}><p>Добавить в
-                                    корзину</p></div>
+                                <img className={content.card} src={e.image} alt='img-good'/>
+                                <div className={content.text}>
+                                    <p> {e.description}</p>
+
+                                    <div className={content.quantity}>
+                                        <Button onClick={decrement} className={content.buttonQty}>-</Button>
+                                        {counter}
+                                        <Button onClick={increment} className={content.buttonQty}>+</Button>
+                                    </div>
+                                    {(e.ingredients) ? (
+                                        <div className={content.ingredients}>
+                                            <p>Ingredients:</p> {e.ingredients.map((i, index) => (
+                                            <p key={index}>{i}</p>))}</div>) : null}
+                                    <p className={content.price}>Price: {e.price}USD</p>
+                                </div>
+
+                                <Button type="submit" className={bonuses.button}
+                                        onClick={() => {
+                                            addToBasket(modalText,counter)
+                                            // @ts-ignore
+                                        }}>Add to basket</Button>
                             </div>
                         ))}
                     </Modal>
 
-                </>
+                </div>
             )
             }
         </>

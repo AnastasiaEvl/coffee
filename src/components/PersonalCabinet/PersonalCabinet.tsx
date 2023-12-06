@@ -16,14 +16,16 @@ import {Button} from "../../shared/Button/Button";
 import {loginThunk} from "../../redux/auth/thunk";
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks/useRedux";
+import useInput from '../../hooks/UseValidation';
 // @ts-ignore
 export const PersonalCabinet = () => {
-
 
     const {authorization} = useAppSelector((state) => state?.auth)
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
+
 
 
     useEffect(() => {
@@ -59,12 +61,7 @@ export const PersonalCabinet = () => {
 
     const [inputValue, setInputValue] = useState({
         name: '',
-        surname: '',
-        phone: '',
         email: '',
-        birthday: '',
-        gender: '',
-        city: '',
         password:''
     })
 
@@ -78,6 +75,11 @@ export const PersonalCabinet = () => {
             [event.target.name]: event.target.value
         }))
     }
+
+    const email = useInput(inputValue.email, {isEmpty: true, isEmail: true});
+    const password = useInput(inputValue.password,{isEmpty: true, minLength: 8});
+    const name = useInput( inputValue.name,{isEmpty: true});
+
     const avat = {
         cat: cat,
         alien: alien,
@@ -104,7 +106,6 @@ export const PersonalCabinet = () => {
     }, [ava]);
 
     const enter = (event: React.FormEvent<HTMLFormElement>) => {
-        console.log('ok')
         event.preventDefault()
         const formData = new FormData(event.currentTarget)
         const login = formData.get('name')?.toString()
@@ -116,7 +117,7 @@ export const PersonalCabinet = () => {
     }
 
     return (
-        <>
+        <div className={personal.mainContainer}>
             <form className={personal.container} onClick={enter}>
                 <fieldset className={personal.formContainer}>
                     <img
@@ -124,14 +125,24 @@ export const PersonalCabinet = () => {
                         alt="alien-icon"
                         className={header.icon}
                     />
-                    <Input value={inputValue.name} onChange={handleChange} placeholder='Name' name='name'></Input>
-                    <Input value={inputValue.password} onChange={handleChange} placeholder='Password' name='password'></Input>
-                    <Input value={inputValue.surname} onChange={handleChange} placeholder='Surname' name='surname'></Input>
-                    <Input value={inputValue.phone} onChange={handleChange} placeholder='Phone' name='phone'></Input>
-                    <Input value={inputValue.email} onChange={handleChange} placeholder='Email' name='email'></Input>
-                    <Input value={inputValue.birthday} onChange={handleChange} placeholder='Date of Birth' name='birthday'></Input>
-                    <Input value={inputValue.gender} onChange={handleChange} placeholder='Gender' name='gender'></Input>
-                    <Input value={inputValue.city} onChange={handleChange} placeholder='City' name='city'></Input>
+                    <Input value={inputValue.name} onChange={handleChange} placeholder='Name' name='name'  onBlur={e => name.onBlur(e)}></Input>
+                    {name.isDirty && name.isEmpty && (
+                        <p>Поле не может быть пустым</p>
+                    )}
+                    <Input value={inputValue.password} onChange={handleChange} placeholder='Password' name='password'  onBlur={e => password.onBlur(e)}></Input>
+                    {(password.isDirty && password.isEmpty) && (
+                        <p>Поле не может быть пустым</p>
+                    ) ||
+                        (password.isDirty && password.minLengthError) && (
+                        <p>Слишком короткий пароль</p>
+                    )}
+                    <Input value={inputValue.email} onChange={handleChange} placeholder='Email' name='email' onBlur={e => email.onBlur(e)}></Input>
+                    {(email.isDirty && email.isEmpty) && (
+                        <p>Поле не может быть пустым</p>
+                    ) ||
+                        (email.isDirty && email.emailError) && (
+                        <p>Некорректный email</p>
+                    )}
                     <Button type="submit" className={bonuses.button}>Login</Button>
                 </fieldset>
             </form>
@@ -145,9 +156,6 @@ export const PersonalCabinet = () => {
             ))}
                 </div>
 
-
-
-
-        </>
+        </div>
     )
 }

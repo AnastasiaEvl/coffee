@@ -1,0 +1,9 @@
+.container{
+    height: 100vh;
+}
+.subcontainer{
+    width: 70%;
+    margin: 0 auto;
+    padding: 2rem;
+
+}

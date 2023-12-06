@@ -3,13 +3,49 @@
     border-radius: 1rem;
     padding: 1rem 3rem;
     background-color: darkgoldenrod;
+    text-align: center;
     color: white;
+    transition: 0.5s;
+}
+.buttonRight {
+    border: 0.5px solid transparent;
+    border-radius: 1rem;
+    padding: 1rem 3rem;
+    background-color: darkgoldenrod;
+    text-align: center;
+    color: white;
+    transition: 0.5s;
+    position: relative;
+    left: 40%;
+}
+.buttonRight:hover {
+    background-color: #c8ac32;
+    transition: 0.5s;
+}
+
+.button:hover {
+    background-color: #c8ac32;
+    transition: 0.5s;
 }
 .buttonLeft{
     border: 0.5px solid transparent;
     border-radius: 1rem;
-    padding: 0 2rem;
+    padding: 1rem 3rem;
     background-color: darkgoldenrod;
     color: white;
     margin-left: auto;
+    transition: 0.5s;
+}
+.buttonNonActive {
+    border: 0.5px solid transparent;
+    border-radius: 1rem;
+    padding: 1rem 3rem;
+    background-color: #e7cd8b;
+    color: white;
+    margin-left: auto;
+}
+
+.buttonLeft:hover{
+    background-color: #c8ac32;
+    transition: 0.5s;
 }

@@ -1,0 +1,38 @@
+.container {
+    background-color: rgba(243, 196, 102, 0.89);
+    width: 100vw;
+    height: 100vh;
+    animation: myAnimation 3s;
+
+}
+
+.logotype {
+    display: block;
+    margin: 0 auto;
+    padding-top: 7rem;
+    width: 7rem;
+}
+
+.title {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+@keyframes myAnimation {
+    0% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+

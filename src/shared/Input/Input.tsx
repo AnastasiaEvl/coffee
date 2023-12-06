@@ -2,11 +2,13 @@ import {InputHTMLAttributes} from "react";
 import inputStyle from './input.module.css'
 
 
-export const Input = (props:InputHTMLAttributes<HTMLInputElement>) => {
+export const Input = (props: InputHTMLAttributes<HTMLInputElement>) => {
     return (
         <>
             <label htmlFor={props.id}></label>
-            <input id = {props.id} {...props} className={inputStyle.input}/>
+            <input id={props.id} {...props} className={inputStyle.input} value={props.value}
+                   onBlur={props.onBlur}
+                   onChange={props.onChange}/>
         </>
     )
 }

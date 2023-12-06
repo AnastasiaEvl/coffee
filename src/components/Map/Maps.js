@@ -3,6 +3,9 @@ import Map from 'react-map-gl';
 import {useEffect, useRef, useState} from "react";
 import mapboxgl from '!mapbox-gl'
 import markers from './map.module.css'
+import {useNavigate} from "react-router-dom";
+import {openModal} from "../../redux/modal/modalSlice";
+import {useAppDispatch} from "../../hooks/useRedux";
 
 
 
@@ -24,6 +27,9 @@ function Maps(props) {
     const mapContainer = useRef(null);
     const {offset, getLocations} = props
     const [filterOpen, setFilterOpen] = useState(false);
+    const navigate = useNavigate()
+    const dispatch = useAppDispatch()
+
 
     const geolocate = new mapboxgl.GeolocateControl({
         positionOptions: {
@@ -36,7 +42,7 @@ function Maps(props) {
         map = new mapboxgl.Map({
             container: mapContainer.current,
             style: "mapbox://styles/mapbox/streets-v11",
-            // style: "mapbox://styles/yauhenicrop/cksefw6lk8w7917peka1csh32",
+
             center: [27.552993989345826, 53.90561911012786],
             zoom: 14,
         });
@@ -95,7 +101,7 @@ function Maps(props) {
                     // crossStreet: "at 15th St NW",
                     // postalCode: "20005",
                     // state: "D.C.",
-                    label: "Н.Теслы 26",
+                    label: "N.Tesla 26",
                 },
             },
             {
@@ -113,7 +119,7 @@ function Maps(props) {
                     // crossStreet: "at 22nd St NW",
                     // postalCode: "20037",
                     // state: "D.C.",
-                    label: "К.Маркса 17",
+                    label: "К.Marksa 17",
                 },
             },
             {
@@ -131,7 +137,7 @@ function Maps(props) {
                     // crossStreet: "at Dupont Circle",
                     // postalCode: "20036",
                     // state: "D.C.",
-                    label: "Белградская 5",
+                    label: "Belgradskaya 5",
                 },
             },
             {
@@ -149,7 +155,7 @@ function Maps(props) {
                     // crossStreet: "at 34th St NW",
                     // postalCode: "20007",
                     // state: "D.C.",
-                    label: "пр.Мира 1",
+                    label: "av.Mira 1",
                 },
             },
             {
@@ -167,7 +173,7 @@ function Maps(props) {
                     // crossStreet: "btwn 2nd & 3rd Sts. SE",
                     // postalCode: "20003",
                     // state: "D.C.",
-                    label: "Белградская 4",
+                    label: "Bekgradskaya 4",
                 },
             },
         ],
@@ -191,6 +197,11 @@ function Maps(props) {
             el.addEventListener("click", (e) => {
                 flyToStore(marker);
                 localStorage.setItem('cafe-location',JSON.stringify(marker.properties.label))
+                dispatch(openModal('The location is chosen'));
+                setTimeout(() => {
+                    navigate('/basket')
+                }, 4300);
+
             });
         }
     }
@@ -205,7 +216,8 @@ function Maps(props) {
     });
 
     return (
-            <div ref={mapContainer} style={{ width: "100%", height: offset < 175 ? "271px": '100px', transition:'0.3s'}}></div>
+            <div ref={mapContainer} style={{ width: "100%", height: offset < 175 ? "271px": '100px', transition:'0.3s', marginLeft:'3rem',
+            marginTop: '2rem', borderRadius: '2rem'}}></div>
     );
 }
 

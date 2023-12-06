@@ -1,50 +1,37 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Maps from "./Maps";
 import * as turf from "@turf/turf";
 import Institution from "./Institutions";
 import mapStyle from './map.module.css'
+import ModalAlert from "../Modal/ModalAlert";
+import {useSelector} from "react-redux";
 
 export const MapCard = () => {
 
     const [offset, setOffset] = useState(0);
     const [institutionItem, setInstitutionItem] = useState([
         {
-            // img: require("../icons/mainPage/map/institutionCard.png"),
-            // logo: require("../icons/landing/partners/logo2.png"),
-            address: "Минск, ул. Николы Теслы 26",
-            rating: "4.8",
+            address: "Minsk, str. Nikoly Tesly 26",
             distance: null,
             coordinates: [27.55360877128241,53.86920453819636],
         },
         {
-            // img: require("../icons/mainPage/map/institutionCard.png"),
-            // logo: require("../icons/landing/partners/logo2.png"),
-            address: "Минск, ул. К.Маркса 17",
-            rating: "5",
+            address: "Minsk, str. К.Marksa 17",
             distance: null,
             coordinates: [27.554300798048054, 53.89852234163179],
         },
         {
-            // img: require("../icons/mainPage/map/institutionCard.png"),
-            // logo: require("../icons/landing/partners/logo2.png"),
-            address: "Минск, Белградская 5",
-            rating: "3",
+            address: "Minsk, str. Belgradskaya 5",
             distance: null,
             coordinates: [27.54333425862814, 53.87103753279246],
         },
         {
-            // img: require("../icons/mainPage/map/institutionCard.png"),
-            // logo: require("../icons/landing/partners/logo2.png"),
-            address: "Минск, пр-т Мира, 1",
-            rating: "4.5",
+            address: "Minsk, avenue Mira, 1",
             distance: null,
             coordinates: [27.54984336931489, 53.87097871726512],
         },
         {
-            // img: require("../icons/mainPage/map/institutionCard.png"),
-            // logo: require("../icons/landing/partners/logo2.png"),
-            address: "Минск, Белградская 4",
-            rating: "4.6",
+            address: "Minsk, str. Belgradskaya 4",
             distance: null,
             coordinates: [27.541810897897005, 53.87128593152572],
 
@@ -53,7 +40,6 @@ export const MapCard = () => {
 
     useEffect(() => {
         const onScroll = () => setOffset(window.pageYOffset);
-        // clean up code
         window.removeEventListener("scroll", onScroll);
         window.addEventListener("scroll", onScroll, {passive: true});
         return () => window.removeEventListener("scroll", onScroll);
@@ -73,10 +59,13 @@ export const MapCard = () => {
         setInstitutionItem(newInstitutionItem)
 
     }
+    // @ts-ignore
+    const { isOpen } = useSelector((store) => store.modal);
 
     return (
         <div className={mapStyle.mainPageContainer}>
             <div>
+                {isOpen && <ModalAlert />}
             <Maps offset={offset} getLocations={getLocations}/>
             </div>
             <div>

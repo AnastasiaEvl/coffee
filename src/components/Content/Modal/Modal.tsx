@@ -1,27 +1,30 @@
 import React from "react";
 import  './modal.css'
 
-// @ts-ignore
-export const Modal = ({ active, setActive, children }) => {
 
-    const r = document.querySelector('#root')
+export const Modal = ({ active, setActive, children }: {active:boolean, setActive: (active: boolean) => void; children: any}) => {
+
+    const rootElement = document.querySelector('#root') as HTMLElement
     if(active){
-        // @ts-ignore
-        r.classList.add('fixed')
+        rootElement.classList.add('fixed')
     }else{
-        // @ts-ignore
-        r.classList.remove('fixed')
+        rootElement.classList.remove('fixed')
+    }
+
+    const closeModal=(e:any)=> {
+        if(e.currentTarget === e.target){
+            setActive(false)
+        }
     }
 
 
     return (
         <div
             className={active ? "modalCount active" : "modalCount"}
-            onClick={() => setActive(false)}
+            onClick={closeModal}
         >
             <div
                 className={active ? "modalCount__content" : "modalCount"}
-                onClick={(e) => e.stopPropagation}
             >
                 {children}
             </div>

@@ -1,0 +1,22 @@
+.container {
+    background-color: #966807;
+    flex: 0 0 auto;
+    padding: 1rem;
+}
+.title{
+    padding-bottom: 1rem;
+}
+.address{
+    display: flex;
+    justify-content: center;
+    gap:2rem
+}
+.icon {
+    text-decoration: none;
+    color: white;
+    transition: 0.8s;
+}
+.icon:hover{
+    color: #ccb889;
+    transition: 0.8s;
+}

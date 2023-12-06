@@ -12,7 +12,7 @@ export const Location = ()=>{
     return(
         <div className={locationStyle.wrapper} onClick={toMap}>
             <img src={location} alt='location-icon' className={locationStyle.icon}/>
-                <h2 className={locationStyle.title}>THE COFFEE</h2>
+                <h2 className={locationStyle.title}>See THE COFFEE location</h2>
                 <img src={toRight} alt='to-right-icon' className={locationStyle.toRightIcon}/>
         </div>
     )

@@ -3,12 +3,15 @@ import {authReducer} from "../auth";
 import {configureStore} from "@reduxjs/toolkit";
 import {ToolkitStore} from "@reduxjs/toolkit/dist/configureStore";
 import {coffeeReducer} from "../products";
+import modalSlice from "../modal/modalSlice";
+
 
 const rootReducer = combineReducers({
     auth:authReducer,
     coffeeHot: coffeeReducer,
     coffeeCold: coffeeReducer,
-    teaDrinks: coffeeReducer
+    teaDrinks: coffeeReducer,
+    modal: modalSlice
 })
 
 

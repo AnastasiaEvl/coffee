@@ -13,9 +13,13 @@
 .avatar{
     width: 4rem;
 }
+.avatar:hover {
+    cursor: pointer;
+}
 .active{
-    border: 1px solid red;
-    background-color: red;
+    border: 1px solid #966807;
+    background-color: #966807;
+    border-radius: 1rem;
 }
 .border{
     border: 1px solid black;
@@ -38,4 +42,12 @@
     flex-direction: column;
     margin: 0 auto;
     gap:1rem
+}
+.avatar:hover{
+    transition: 0.5s;
+    filter: brightness(30%);
+    background-color: #966807;
+}
+.mainContainer{
+    height: 100vh;
 }
