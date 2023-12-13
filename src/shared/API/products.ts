@@ -1,5 +1,5 @@
 import Api from "./path";
-import {IProduct} from "../Types/InterfaceProduct";
+import {IProduct} from "../../core/types/IProduct";
 
 class ProductsApi extends Api {
     endpointHot ='coffee'

@@ -1,6 +1,6 @@
 import {AsyncThunk, createAsyncThunk} from "@reduxjs/toolkit";
 import ProductsApi from "../../shared/API/products";
-import {IProduct} from "../../shared/Types/InterfaceProduct";
+import {IProduct} from "../../core/types/IProduct";
 
 export const fetchHotDrinks:  AsyncThunk<IProduct[], void, any> = createAsyncThunk(
     'countries/fetchCountries',

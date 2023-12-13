@@ -1,8 +1,11 @@
 import cups from '../../assets/images/slider2.jpg'
 import cup from '../../assets/icons/cup.png'
 import winterStyle from "../WinterMenu/winter.module.css";
+import {BackButton} from "../../components/UI/BackButton";
 export const DiscountForCup=()=>{
     return (
+        <>
+      <BackButton/>
         <div className={winterStyle.container}>
             <img src = {cups} alt='silicone-cups-image' className = {winterStyle.image}/>
             <h2 className={winterStyle.title} >Discount is 10% for coffee in your cup!
@@ -11,5 +14,6 @@ export const DiscountForCup=()=>{
             <p>So we propose discount 10% for coffee in your cup</p>
             <p>Moreover you could buy cups Stojo and Ecoffee Cup in our cafes</p>
         </div>
+        </>
     )
 }

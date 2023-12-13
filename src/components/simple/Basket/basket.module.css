@@ -1,0 +1,50 @@
+.container{
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: row;
+}
+.img{
+    width: 12rem;
+    height: auto;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+.content{
+    padding: 1rem 1rem;
+}
+.title {
+    text-align: left;
+    padding: 2rem;
+}
+.textLocation{
+    padding-top: 1rem;
+}
+.location {
+   display: flex;
+    gap: 1rem
+}
+.subtitle{
+    text-align: left;
+    padding-top: 1rem;
+}
+.payment{
+    display: flex;
+    gap:2rem
+}
+.emptyTitle{
+    padding-top: 10rem;
+}
+
+
+@media (max-width: 768px) {
+    .container{
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+        padding: 1rem 0.5rem;
+    }
+    .location {
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -6,12 +6,13 @@ import {coffeeReducer} from "../products";
 import modalSlice from "../modal/modalSlice";
 
 
+
 const rootReducer = combineReducers({
     auth:authReducer,
     coffeeHot: coffeeReducer,
     coffeeCold: coffeeReducer,
     teaDrinks: coffeeReducer,
-    modal: modalSlice
+    modal: modalSlice,
 })
 
 

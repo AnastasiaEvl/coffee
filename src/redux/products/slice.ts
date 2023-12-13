@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IProduct} from "../../shared/Types/InterfaceProduct";
+import {IProduct} from "../../core/types/IProduct";
 import {fetchColdDrinks, fetchHotDrinks, fetchTeaDrinks} from "./thunk";
 
 interface ProductState {

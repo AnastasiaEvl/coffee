@@ -1,6 +1,6 @@
 import Api from "./path";
 import axios from "axios";
-import {Response} from "../Types/InterfaceResponse";
+import {Response} from "../../core/types/IResponse";
 
 export class AuthApi extends Api {
     endpoint = '/auth'
@@ -25,7 +25,7 @@ export class AuthApi extends Api {
         }).then(res => res.data)
     }
 
-    async logout(){
+    async logout() {
         return await this.api({
             method: 'post',
             url: `${this.endpoint}/logout`,
@@ -35,7 +35,6 @@ export class AuthApi extends Api {
         }).then(res => res.data)
     }
 }
-
 
 
 export default new AuthApi()

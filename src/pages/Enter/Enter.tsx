@@ -1,16 +1,16 @@
 import logo from '../../assets/icons/logo.png'
 import enter from './enter.module.css'
-import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-export const Enter=()=>{
+
+export const Enter = () => {
 
     const navigate = useNavigate()
 
-    function nav(){
+    function navigateToMainPage():void {
         navigate('/main')
     }
-    // @ts-ignore
-    setTimeout(nav, 2500);
+
+    setTimeout(navigateToMainPage, 2500);
 
     return (
         <div className={enter.container}>

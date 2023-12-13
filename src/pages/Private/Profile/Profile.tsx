@@ -1,63 +1,37 @@
-import {NavLink} from "react-router-dom";
-import header from "../../../components/Header/header.module.css";
+import {NavLink, useNavigate} from "react-router-dom";
+import header from "../../../components/simple/Header/header.module.css";
 import React, {useEffect, useState} from "react";
-import cat from "../../../assets/icons/cat.png";
-import alien from "../../../assets/icons/alien.png";
-import dinosaur from "../../../assets/icons/dinosaur.png";
-import knight from "../../../assets/icons/knight.png";
-import lion from "../../../assets/icons/lion.png";
-import man from "../../../assets/icons/man.png";
-import mummy from "../../../assets/icons/mummy.png";
-import scull from "../../../assets/icons/scull.png";
-import woman from "../../../assets/icons/woman.png";
 import profile from './profile.module.css'
-import ModalAlert from "../../../components/Modal/ModalAlert";
-import {useSelector} from "react-redux";
+import {AVATARS} from "../../../core/constants/Avatars";
+import {UseGetLocalStorageItem} from "../../../core/hooks/useLocalStorage";
+import {BackButton} from "../../../components/UI/BackButton";
 
 export const Profile = () => {
 
-
-    const avatars = {
-        cat: cat,
-        alien: alien,
-        dinosaur:dinosaur,
-        knight:knight,
-        lion:lion,
-        man:man,
-        mummy:mummy,
-        scull:scull,
-        woman:woman
-    }
-
-    const [avatar, setAvatar]=useState(alien)
-
-    const x = localStorage.getItem('avatar')
+    const [avatar, setAvatar] = useState<string>(AVATARS.alien)
+    const userAvatar = UseGetLocalStorageItem('avatar')
+    const userName = UseGetLocalStorageItem('name')
 
 
-
-    useEffect(() => {
-            for (let key in avatars) {
-                // @ts-ignore
-                if(key === JSON.parse(x)){
-                    // @ts-ignore
-                    setAvatar(avatars[key])
+    useEffect(():void => {
+            for (let key in AVATARS) {
+                if(key === userAvatar){
+                    setAvatar(AVATARS[key])
                 }
             }
     }, [avatar]);
 
 
-    // @ts-ignore
-    const y = JSON.parse(localStorage.getItem('name'))
-    // @ts-ignore
 
-    return (
+    return (<>
+        <BackButton/>
         <div className={profile.container}>
                 <img
                     src={avatar}
                     alt="alien-icon"
                     className={header.icon}
                 />
-                <h2>{y}</h2>
+                <h2>{userName}</h2>
             <NavLink to={`/orders`}
                      style={{ textDecoration: 'none' }}>
                 <h2 className={profile.title}  style={{ textDecoration: 'none' }}>Current order</h2>
@@ -66,5 +40,6 @@ export const Profile = () => {
                 <h2 className={profile.title} style={{ textDecoration: 'none' }}>Common questions</h2>
             </NavLink>
         </div>
+        </>
     )
 }

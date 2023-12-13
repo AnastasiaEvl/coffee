@@ -9,6 +9,7 @@ export const loginThunk = createAsyncThunk(
         return response
     }
 )
+
 export const checkAuthThunk = createAsyncThunk(
     'auth/checkAuth',
     async ()=>{

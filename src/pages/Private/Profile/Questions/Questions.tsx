@@ -1,40 +1,36 @@
-import {Button} from "../../../../shared/Button/Button";
-import ModalAlert from "../../../../components/Modal/ModalAlert";
+import {Button} from "../../../../components/UI/Button/Button";
 import React from "react";
 import {openModal} from "../../../../redux/modal/modalSlice";
-import {useAppDispatch} from "../../../../hooks/useRedux";
-import {useSelector} from "react-redux";
-import {paymentInfText} from "../../../../assets/modalText/paymentInfText";
-import {contractInfText} from "../../../../assets/modalText/contractInfText";
+import {useAppDispatch} from "../../../../core/hooks/useRedux";
+import {paymentInfText} from "../../../../core/modalText/paymentInfText";
+import {contractInfText} from "../../../../core/modalText/contractInfText";
 import question from './questions.module.css'
-import bonuses from "../../../../components/Bonuses/bonuses.module.css";
+import bonuses from "../../../../components/simple/Bonuses/bonuses.module.css";
+import {BackButton} from "../../../../components/UI/BackButton";
 
 export const Questions = () => {
 
-
-    // @ts-ignore
-    const { isOpen } = useSelector((store) => store.modal);
-
     const dispatch = useAppDispatch()
 
-    const paymentInf=()=>{
-        // @ts-ignore
+    const paymentInf = ():void => {
         dispatch(openModal(`${paymentInfText}`));
     }
 
-    const contractInf =()=> {
-        // @ts-ignore
+    const contractInf = ():void => {
         dispatch(openModal(`${contractInfText}`))
     }
+
     return (
-        <div className={question.container}>
-            {isOpen && <ModalAlert />}
-            <Button onClick={paymentInf} className={bonuses.button}>
-                Payment for the order
-            </Button>
-            <Button onClick={contractInf} className={bonuses.button}>
-                Public offer agreement
-            </Button>
-        </div>
+        <>
+            <BackButton/>
+            <div className={question.container}>
+                <Button onClick={paymentInf} className={bonuses.button}>
+                    Payment for the order
+                </Button>
+                <Button onClick={contractInf} className={bonuses.button}>
+                    Public offer agreement
+                </Button>
+            </div>
+        </>
     )
 }

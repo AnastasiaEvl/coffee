@@ -1,0 +1,44 @@
+.icon {
+    width: 3rem;
+    height: auto;
+}
+.wrapper{
+    display: flex;
+    border: 0.1rem solid transparent;
+    box-shadow: 0 0 13px #966807;
+    padding: 0.5rem;
+    width: 70%;
+    border-radius: 20px;
+    margin: 3rem auto;
+    background-color: #ccb889;
+    transition: 1s;
+    align-items: center;
+}
+
+.wrapper:hover{
+    cursor: pointer;
+        box-shadow:
+                1px 1px #ddc968,
+                2px 2px #ddc968,
+                3px 3px #ddc968,
+                4px 4px #ddc968,
+                5px 5px #ddc968,
+                6px 6px #ddc968,
+                7px 7px #ddc968;
+        transform: translateX(-7px);
+        transition: 1s;
+    border: 1px solid #966807;
+
+}
+.title{
+    text-align: left;
+    font-size: 1rem;
+    padding-left:0.5rem;
+
+}
+
+.toRightIcon {
+    width: 3rem;
+    height: auto;
+    margin-left: auto;
+}

@@ -2,3 +2,10 @@
     height: 100vh;
     padding: 1rem;
 }
+
+.img {
+    width: 12rem;
+    height: auto;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}

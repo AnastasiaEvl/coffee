@@ -1,0 +1,164 @@
+.carousel {
+    width: 80%;
+    margin: 5rem auto;
+
+}
+
+.photo {
+    max-width: 30rem;
+    height: 20rem;
+    border-radius: 5rem;
+}
+
+.slide {
+    width: 35rem;
+}
+
+.smallTitle {
+    background-color: white;
+    opacity: 0.8;
+    width: 80%;
+    border-radius: 1rem;
+    margin: 0 auto;
+    padding: 0.5rem;
+    color: black;
+    position: relative;
+    z-index: 1;
+    bottom: 3rem
+}
+
+@media (min-width: 320px) and (max-width: 340px) {
+    html {
+        font-size: 16px;
+    }
+
+    .photo {
+        max-width: 17rem;
+        width: 100%;
+        height: 15rem;
+        border-radius: 5rem;
+    }
+
+    .slide {
+        padding-top: 1rem;
+        background-color: #00fbf4;
+        width: fit-content;
+        height: fit-content;
+    }
+
+    .smallTitle {
+        background-color: white;
+        opacity: 0.8;
+        width: 90%;
+        border-radius: 1rem;
+        margin: 0 auto;
+        padding: 0.5rem;
+        color: black;
+        position: relative;
+        z-index: 1;
+        bottom: 5rem
+    }
+
+}
+
+@media (min-width: 340px) and (max-width: 670px) {
+    html {
+        font-size: 16px;
+    }
+
+    .photo {
+        max-width: 17rem;
+        width: 100%;
+        height: 15rem;
+        border-radius: 5rem;
+    }
+
+    .slide {
+        padding-top: 1rem;
+        width: fit-content;
+        height: fit-content;
+        margin: 0 auto;
+    }
+
+    .smallTitle {
+        background-color: white;
+        opacity: 0.8;
+        width: 90%;
+        border-radius: 1rem;
+        margin: 0 auto;
+        padding: 0.5rem;
+        color: black;
+        position: relative;
+        z-index: 1;
+        bottom: 5rem
+    }
+
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+
+    .photo {
+        max-width: 17rem;
+        width: 100%;
+        height: 15rem;
+        border-radius: 5rem;
+    }
+
+    .slide {
+        padding-top: 1rem;
+        width: fit-content;
+        height: fit-content;
+        margin: 0 auto;
+    }
+
+    .smallTitle {
+        background-color: white;
+        opacity: 0.8;
+        width: 90%;
+        border-radius: 1rem;
+        margin: 0 auto;
+        padding: 0.5rem;
+        color: black;
+        position: relative;
+        z-index: 1;
+        bottom: 5rem
+    }
+
+}
+
+@media (min-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+
+    .photo {
+        max-width: 40rem;
+        width: 100%;
+        height: 18rem;
+        border-radius: 5rem;
+    }
+
+    .slide {
+        padding-top: 1rem;
+        width: fit-content;
+        height: fit-content;
+        margin: 0 auto;
+    }
+
+    .smallTitle {
+        background-color: white;
+        opacity: 0.8;
+        width: 90%;
+        border-radius: 1rem;
+        margin: 0 auto;
+        padding: 0.5rem;
+        color: black;
+        position: relative;
+        z-index: 1;
+        bottom: 5rem
+    }
+
+}

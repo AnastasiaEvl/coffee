@@ -1,0 +1,141 @@
+.card {
+    max-width: 20rem;
+    height: auto;
+    border-radius: 2rem;
+    transition: 1s;
+    filter: brightness(65%);
+    width: 100%;
+}
+
+.card:hover {
+    transition: 1s;
+    filter: brightness(90%);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 1rem;
+    justify-content: space-evenly;
+}
+
+.smallContainer:hover {
+    cursor: pointer;
+    color: #966807;
+    transition: 1s;
+}
+
+.smallContainer {
+    transition: 1s;
+}
+
+.title {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    padding: 5rem;
+}
+
+.name {
+    padding: 2rem;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+
+.drinkTitle {
+    padding-bottom: 1rem;
+}
+
+.mainContainer {
+    padding-bottom: 5rem;
+}
+
+.text {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.ingredients {
+    border: 1px solid #ccb889;
+    border-radius: 1rem;
+    background-color: #ccb889;
+    color: white;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.price {
+    padding: 1rem;
+}
+
+.quantity {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.buttonQty {
+    background-color: #ccb889;
+    border-radius: 10rem;
+    padding: 0.1rem 1rem;
+    font-weight: bold;
+    transition: 0.5s;
+
+}
+
+.buttonQty:hover {
+    background-color: #c8ac32;
+    border-radius: 10rem;
+    padding: 0.1rem 1rem;
+    font-weight: bold;
+    transition: 0.5s;
+    color: white;
+
+}
+
+.closeBtn {
+    background-color: #F08080;
+    border-radius: 10rem;
+    height: fit-content;
+    padding: 0 1rem;
+    margin-left: 1rem;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.closeBtn:hover {
+    background-color: #CD5C5C;
+    border-radius: 10rem;
+    height: fit-content;
+    margin-left: 1rem;
+    font-weight: bold;
+    transition: 0.5s;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .title {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .container {
+        grid-template-columns: repeat(1, auto);
+        padding: 0 0.7rem;
+    }
+
+    .ingredients {
+        width: 100%;
+    }
+}
