@@ -1,4 +1,4 @@
-import {NavLink, useNavigate} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import header from "../../../components/simple/Header/header.module.css";
 import React, {useEffect, useState} from "react";
 import profile from './profile.module.css'
@@ -36,9 +36,9 @@ export const Profile = () => {
                      style={{ textDecoration: 'none' }}>
                 <h2 className={profile.title}  style={{ textDecoration: 'none' }}>Current order</h2>
             </NavLink>
-            <NavLink to={'/questions'} style={{ textDecoration: 'none' }}>
+            <Link to={'/questions'} style={{ textDecoration: 'none' }}>
                 <h2 className={profile.title} style={{ textDecoration: 'none' }}>Common questions</h2>
-            </NavLink>
+            </Link>
         </div>
         </>
     )

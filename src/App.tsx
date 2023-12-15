@@ -34,6 +34,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route element={<MainLayout/>}>
+                    <Route index element={<Enter/>}/>
                     <Route path='/' element={<Enter/>}/>
                     <Route path='/main' element={<HomePage/>}/>
                     <Route path='/personal' element={<PersonalCabinet/>}/>
@@ -46,12 +47,14 @@ function App() {
                     <Route path='/loyaltySystem' element={<LoyaltySystem/>}/>
                     <Route path='/pointsForRegistration' element={<PointsForRegistration/>}/>
                     <Route element={<PrivateRoute/>}>
-                        <Route path='/profile' element={<Profile/>}/>
-                        <Route path='/orders' element={<Orders/>}/>
-                        <Route path='/questions' element={<Questions/>}/>
+                        <Route path='/profile'>
+                            <Route index element={<Profile/>}/>
+                        </Route>
                     </Route>
+                    <Route path='orders' element={<Orders/>}/>
+                    <Route path='questions' element={<Questions/>}/>
+                    <Route path="*" element={<NotFound/>}/>
                 </Route>
-                <Route path="*" element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>
     )

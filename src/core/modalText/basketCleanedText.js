@@ -1,1 +1,1 @@
-export const BasketCleanedText = 'The basket is cleaned'
+export const BasketCleanedText = 'The cart is cleaned'

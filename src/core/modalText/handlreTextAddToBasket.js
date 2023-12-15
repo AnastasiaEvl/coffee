@@ -1,1 +1,1 @@
-export const handlreTextAddToBasket = 'Added to the basket'
+export const handlreTextAddToBasket = 'Added to the cart'

@@ -82,7 +82,7 @@ export const Header = () => {
                     <li onClick={basket}>
                         <a className={header.link}>
                             <img src={basketIcon} alt="" className={header.icon}/>
-                            Basket
+                            Cart
                         </a>
                     </li>
 
